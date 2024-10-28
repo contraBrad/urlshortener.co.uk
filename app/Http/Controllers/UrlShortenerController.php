@@ -36,11 +36,13 @@ class UrlShortenerController extends Controller
         ]);
     }
 
-        // Redirect
+        // Redirect using the short code
         public function redirect($shortCode)
         {  
+            // Fetch the URL associated with the short code
             $url = ShortUrl::where('short_code',  $shortCode)->firstOrFail();
 
+            // Redirect to the original URL
             return redirect($url->original_url);
         }
         
