@@ -16,6 +16,7 @@ class UrlShortenerController extends Controller
 
     public function store(Request $request)
     {
+        // Validate the request
         $request->validate([
             'url' => 'required|url',
         ]);
@@ -36,14 +37,13 @@ class UrlShortenerController extends Controller
         ]);
     }
 
-        // Redirect using the short code
-        public function redirect($shortCode)
-        {  
-            // Fetch the URL associated with the short code
-            $url = ShortUrl::where('short_code',  $shortCode)->firstOrFail();
+    // Redirect using the short code
+    public function redirect($shortCode)
+    {  
+        // Fetch the URL associated with the short code
+        $url = ShortUrl::where('short_code',  $shortCode)->firstOrFail();
 
-            // Redirect to the original URL
-            return redirect($url->original_url);
-        }
-        
+        // Redirect to the original URL
+        return redirect($url->original_url);
+    }
 }

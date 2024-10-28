@@ -7,7 +7,7 @@
                 @csrf
                 <div class="mb-4">
                     <label for="url" class="block text-gray-700">Enter a URL to shorten:</label>
-                    <input type="url" name="url" placeholder="https://example.com/long-url" class="w-full border-gray-300 border-2 rounded mt-1" required>
+                    <input type="url" name="url" placeholder="https://example.com/long-url" class="w-full p-1.5 border-gray-300 border-2 rounded mt-1" required>
                     @error('url')
                         <div class="text-red-500 mt-2 text-sm">{{ $message }}</div>
                     @enderror

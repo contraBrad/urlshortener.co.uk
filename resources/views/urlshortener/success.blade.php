@@ -6,7 +6,7 @@
         <p class=" text-center text-lg mt-2 pb-4">{{ $shortUrl->original_url }}</p>
 
         <p class="text-center text-lg">Your shortened URL:</p>
-        <a href="{{ $shortenedUrl }}" class="text-blue-500 text-center block mt-2">{{ $shortenedUrl }}</a>
+        <a href="{{ $shortenedUrl }}" target="_blank" class="text-blue-500 text-center block mt-2">{{ $shortenedUrl }}</a>
 
         <a href="/" class="block text-center mt-6 text-blue-500">Shorten another URL</a>
     </div>
