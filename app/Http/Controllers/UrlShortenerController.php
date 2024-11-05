@@ -36,9 +36,7 @@ class UrlShortenerController extends Controller
         }
 
         // Generate short code using a timestamp
-        $timestamp = base_convert(time(), 10, 36);
-        $randomString = Str::random(3);
-        $shortCode = $timestamp . $randomString;
+        $shortCode = hash('crc32', $cleanedUrl);
 
         // Create a new short URL record
         $shortUrl = ShortUrl::create([
