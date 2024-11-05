@@ -21,19 +21,35 @@ class UrlShortenerController extends Controller
             'url' => 'required|url',
         ]);
 
-        // Generate a unique short code
-        $shortCode = Str::random(6);
+        // Remove the / from the end of the URL
+        $cleanedUrl = rtrim($request->url, '/');
 
-        // Store the original URL and short code in the database
+        // Check if the original URL already exists
+        $existingUrl = ShortUrl::where('original_url', $cleanedUrl)->first();
+
+        // If the original URL already exists, return the shortened URL
+        if ($existingUrl) {
+            return view('urlshortener.success',[
+                'shortUrl' => $existingUrl,
+                'shortenedUrl' => route('urlshortener.redirect', ['shortCode' => $existingUrl->short_code]),
+            ]);
+        }
+
+        // Generate short code using a timestamp
+        $timestamp = base_convert(time(), 10, 36);
+        $randomString = Str::random(3);
+        $shortCode = $timestamp . $randomString;
+
+        // Create a new short URL record
         $shortUrl = ShortUrl::create([
-            'original_url' => $request->url,
-            'short_code' => $shortCode
+            'original_url' => $cleanedUrl,
+            'short_code' => $shortCode,
         ]);
 
         // Display the shortened URL and the original URL
         return view('urlshortener.success',[
             'shortUrl' => $shortUrl,
-            'shortenedUrl' => url('/l/'.$shortCode),
+            'shortenedUrl' => route('urlshortener.redirect', ['shortCode' => $shortCode]),
         ]);
     }
 

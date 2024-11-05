@@ -1,5 +1,5 @@
-- Figure a way to always get a unique short code
-- Only need 1 row per "long" url (never have duplicates)
-- Use the Laravel route() instead of url() function within redirect controller method
-- Trim / off of long url's
+- Figure a way to always get a unique short code   ----- DONE
+- Only need 1 row per "long" url (never have duplicates) ----- DONE
+- Use the Laravel route() instead of url() function within redirect controller method ----- DONE
+- Trim / off of long url's ----- DONE 
 - Custom 404 page
