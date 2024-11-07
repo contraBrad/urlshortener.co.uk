@@ -45,6 +45,15 @@ class UrlShortener extends Component
         // Reset the URL field for new shortening
         $this->url = '';
     }
+
+    public static function redirectToOriginalUrl($shortCode)
+    {
+        // Fetch the URL associated with the short code
+        $url = ShortUrl::where('short_code',  $shortCode)->firstOrFail();
+
+        // Redirect to the original URL
+        return redirect($url->original_url);
+    }
     public function render()
     {
         return view('livewire.url-shortener');

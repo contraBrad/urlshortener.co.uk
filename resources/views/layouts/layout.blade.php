@@ -12,6 +12,10 @@
 
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        {{-- livewire --}}
+        @livewireStyles
+        @livewireScripts
     </head>
     <body>
         <main class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-t from-blue-950 to-blue-900">
