@@ -1,8 +1,15 @@
 <?php
 
-use App\Http\Controllers\UrlShortenerController;
+use App\Livewire\UrlShortener;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UrlShortenerController;
 
-Route::get('/', [UrlShortenerController::class, 'index'])->name('urlshortener.index');
-Route::post('/shorten', [UrlShortenerController::class, 'store'])->name('urlshortener.store');
-Route::get('/l/{shortCode}', [UrlShortenerController::class, 'redirect'])->name('urlshortener.redirect');
+Route::get('/', function () 
+{
+   return view('urlshortener.index'); 
+})->name('urlshortener.index');
+
+Route::get('/l/{shortCode}', function ($shortCode) 
+{
+    return UrlShortener::redirectToOriginalUrl($shortCode);
+})->name('urlshortener.short');

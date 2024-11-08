@@ -27,7 +27,7 @@ class UrlShortener extends Component
 
         // If the original URL already exists, return the shortened URL
         if ($existingUrl) {
-            $this->shortenedUrl = route('urlshortener.redirect', ['shortCode' => $existingUrl->short_code]);
+            $this->shortenedUrl = route('urlshortener.short', ['shortCode' => $existingUrl->short_code]);
             $this->originalUrl = $existingUrl->original_url;
         } else {
             // Generate short code and create a new short URL record
@@ -38,7 +38,7 @@ class UrlShortener extends Component
             ]);
 
             // Redirect to the original URL
-            $this->shortenedUrl = route('urlshortener.redirect', ['shortCode' => $shortUrl->short_code]);
+            $this->shortenedUrl = route('urlshortener.short', ['shortCode' => $shortUrl->short_code]);
             $this->originalUrl = $cleanedUrl;
         }
 
