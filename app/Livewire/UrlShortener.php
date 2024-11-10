@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Mail\SendMail;
 use Livewire\Component;
 use App\Models\ShortUrl;
+use Illuminate\Support\Facades\Mail;
 
 class UrlShortener extends Component
 {
@@ -40,6 +42,9 @@ class UrlShortener extends Component
             // Redirect to the original URL
             $this->shortenedUrl = route('urlshortener.short', ['shortCode' => $shortUrl->short_code]);
             $this->originalUrl = $cleanedUrl;
+
+            // Send an email with the shortened url
+            Mail::to('brad@test.com')->send(new SendMail($this->shortenedUrl));
         }
 
         // Reset the URL field for new shortening
