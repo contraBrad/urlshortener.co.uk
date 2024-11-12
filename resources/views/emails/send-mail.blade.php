@@ -1,4 +1,8 @@
 <div>
     <h1>Successfully Shortened a url</h1>
-    <a href="{{ $shortenedUrl }}" target="_blank"></a>{{ $shortenedUrl }}</span>
+    {{-- TODO $originalUrl needs to be passed in --}}
+    <div>Original URL:</div>
+    <a href="{{ $originalUrl }}" target="_blank">{{ $originalUrl }}</a>
+    <div>Shortened URL:</div>
+    <a href="{{ $shortenedUrl }}" target="_blank">{{ $shortenedUrl }}</a>
 </div>

@@ -13,13 +13,15 @@ class SendMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $shortenedUrl;
+    protected $shortenedUrl;
+    protected $originalUrl;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($shortenedUrl)
+    public function __construct($originalUrl, $shortenedUrl)
     {
+        $this->originalUrl = $originalUrl;
         $this->shortenedUrl = $shortenedUrl;
     }
 
@@ -36,11 +38,13 @@ class SendMail extends Mailable
     /**
      * Get the message content definition.
      */
-    public function content(): Content
+    public function build()
     {
-        return new Content(
-            view: 'emails.send-mail',
-        );
+        return $this->view('emails.send-mail')
+            ->with([
+                'originalUrl' => $this->originalUrl,
+                'shortenedUrl' => $this->shortenedUrl,
+            ]);
     }
 
     /**
