@@ -44,7 +44,7 @@ class UrlShortener extends Component
             $this->originalUrl = $cleanedUrl;
 
             // Send an email with the shortened url
-            Mail::to('brad@test.com')->send(new SendMail($this->originalUrl, $this->shortenedUrl));
+            Mail::to('brad@test.com')->queue(new SendMail($this->originalUrl, $this->shortenedUrl));
         }
 
         // Reset the URL field for new shortening
