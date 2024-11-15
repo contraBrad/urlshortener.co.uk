@@ -21,7 +21,10 @@
                    @enderror
                </div>
 
-               <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded">Shorten URL</button>
+               <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded">
+                    <span wire:loading.remove wire:target="store">Shorten URL</span>
+                    <span wire:loading wire:target="store" ><i class="fa-solid fa-spinner fa-spin"></i></span>
+                </button>
             </form>
         </div>
     @endif

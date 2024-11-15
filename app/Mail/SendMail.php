@@ -19,7 +19,7 @@ class SendMail extends Mailable implements ShouldQueue
     /**
      * Create a new message instance.
      */
-    public function __construct($originalUrl, $shortenedUrl)
+    public function __construct(string $originalUrl, string $shortenedUrl)
     {
         $this->originalUrl = $originalUrl;
         $this->shortenedUrl = $shortenedUrl;
@@ -32,6 +32,7 @@ class SendMail extends Mailable implements ShouldQueue
     {
         return new Envelope(
             subject: 'Successfully Shortened a url',
+
         );
     }
 

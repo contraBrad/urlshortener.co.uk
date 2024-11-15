@@ -10,9 +10,12 @@
         <link rel="preconnect" href="https://fonts.bunny.net" />
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <!-- Icons -->
+        <script src="https://kit.fontawesome.com/d4dd29a761.js" crossorigin="anonymous"></script>
+
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+        
         {{-- livewire --}}
         @livewireStyles
         @livewireScripts

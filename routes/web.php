@@ -9,7 +9,4 @@ Route::get('/', function ()
    return view('urlshortener.index'); 
 })->name('urlshortener.index');
 
-Route::get('/l/{shortCode}', function ($shortCode) 
-{
-    return UrlShortener::redirectToOriginalUrl($shortCode);
-})->name('urlshortener.short');
+Route::get('/l/{shortCode}', [UrlShortenerController::class, 'redirect'])->name('urlshortener.short');
