@@ -2,9 +2,9 @@
     @if($shortenedUrl)
         <div class="bg-white p-10 rounded-xl shadow-lg">
             <p class="text-center text-lg">Original URL:</p>
-            <p class="text-center text-lg mt-2 pb-4">{{ $originalUrl }}</p>
+            <a href="{{ $originalUrl }}" target="_blank" class="text-blue-500 text-center block mt-2">{{ $originalUrl }}</a>
 
-            <p class="text-center text-lg">Your shortened URL:</p>
+            <p class="text-center text-lg mt-2">Your shortened URL:</p>
             <a href="{{ $shortenedUrl }}" target="_blank" class="text-blue-500 text-center block mt-2">{{ $shortenedUrl }}</a>
 
             <button wire:click="$set('shortenedUrl', null)" class="block text-center mx-auto mt-6 text-blue-500">Shorten another URL</button>
